@@ -4,7 +4,7 @@ import driver.DriverC;
 import driver.DriverD;
 import transport.*;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -84,6 +84,39 @@ public class Main {
         car2.diagnostics();
         truck1.fixCar();
         car1.informationDriverMechanic();
+
+        Map<Transport, Mechanic> transportMechanicMap = new HashMap<>();
+        transportMechanicMap.put(car1, mechanic1);
+        transportMechanicMap.put(car2, mechanic2);
+        transportMechanicMap.put(car3, mechanic3);
+        transportMechanicMap.put(truck1, mechanic1);
+        transportMechanicMap.put(truck2, mechanic2);
+        transportMechanicMap.put(truck3, mechanic4);
+        transportMechanicMap.put(truck1, mechanic1);
+        transportMechanicMap.put(truck2, mechanic2);
+        System.out.print(transportMechanicMap);
+        for (Map.Entry<Transport,Mechanic> map : transportMechanicMap.entrySet()) {
+            System.out.println(map.getKey() + " " + map.getValue());
+        }
+        Map<Transport, ArrayList<Mechanic>> transportArrayListMap = new HashMap<>();
+        for (Transport transport : transports) {
+            transportArrayListMap.put(transport, transport.getMechanics());;
+        }
+        System.out.println("@@@@@");
+        for (Map.Entry<Transport, ArrayList<Mechanic>> map : transportArrayListMap.entrySet()) {
+            System.out.println(map.getKey() + " " + map.getValue());
+        }
+        Set<Driver> driverSet = new HashSet<>();
+        driverSet.add(driver1);
+        driverSet.add(driver2);
+        driverSet.add(driver3);
+        driverSet.add(driver1);
+        driverSet.add(driver2);
+        Iterator<Driver> iterator = driverSet.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
 
     }
 }
